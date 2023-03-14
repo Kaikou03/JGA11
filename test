@@ -1,1 +1,35 @@
+sing System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
 
+public class ItemGet : MonoBehaviour
+{
+    int score = 0;
+    // Start is called before the first frame update
+    //void Start()
+    //{
+        
+    //}
+    // Update is called once per frame
+    //void Update()
+    //{
+        
+    //}
+
+    // プレイヤーにつける用
+    private void OntriggerEnter(Collision collision)
+    {
+        // コインタグに触れた時
+        if (collision.gameObject.tag == "Coin")
+        {// -----if start -----
+
+            // ItemDetaからのオブジェクトを受け取る
+            ItemDeta item = collision.gameObject.GetComponent<ItemDeta>();
+            // スコアを加算する
+            score = item.value;
+
+            //アイテム(コイン)を削除する
+            Destroy(collision.gameObject);
+        }// -----if stop -----
+    }
+}
